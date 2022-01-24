@@ -2,4 +2,6 @@ project: jay-sandbox-cts
 region: europe-west2
 zone: europe-west2-b
 
+state_bucket: terragrunt-practice-state
+
 repo_owner: jay-grindrod-cts

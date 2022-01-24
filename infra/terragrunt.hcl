@@ -3,8 +3,9 @@
 locals {
   root_vars = yamldecode(file(find_in_parent_folders("vars.yaml")))
   project  = local.root_vars.project
-  region   = local.root_vars.zone
+  region   = local.root_vars.region
   zone = local.root_vars.zone
+  state_bucket = local.root_vars.state_bucket
 }
 
 // Provider
@@ -28,11 +29,11 @@ generate "versions" {
 remote_state {
     backend = "gcs"
     generate = {
-        path = "backend.tf"
+        path = "${get_parent_terragrunt_dir()}/backend.tf"
         if_exists = "skip"
     }
     config = {
-        bucket = "terragrunt-practice-state"
+        bucket = local.state_bucket
         prefix = path_relative_to_include()
         project  = local.project
         location = local.region
