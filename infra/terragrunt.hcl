@@ -5,21 +5,22 @@ locals {
   project  = local.root_vars.project
   region   = local.root_vars.zone
   zone = local.root_vars.zone
-  extra_tf_cmds = get_terraform_commands_that_need_vars()
 }
 
 // Provider
 
 generate "provider" {
-    path = "provider.tf"
-    if_exists = "overwrite_terragrunt"
-    contents = <<EOF
-        provider "google" {
-            project = local.project
-            region = local.region
-            zone = local.zone
-        }
-    EOF
+  path      = "provider.tf"
+  if_exists = "skip"
+  contents  = file(find_in_parent_folders("provider.tf"))
+}
+
+// Versions
+
+generate "versions" {
+  path      = "versions.tf"
+  if_exists = "skip"
+  contents  = file(find_in_parent_folders("versions.tf"))
 }
 
 // State
@@ -28,7 +29,7 @@ remote_state {
     backend = "gcs"
     generate = {
         path = "backend.tf"
-        if_exists = "overwrite_terragrunt"
+        if_exists = "skip"
     }
     config = {
         bucket = "terragrunt-practice-state"
