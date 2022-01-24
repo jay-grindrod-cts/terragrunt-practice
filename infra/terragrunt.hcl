@@ -10,7 +10,7 @@ locals {
 // Provider
 
 generate "provider" {
-  path      = "provider.tf"
+  path      = "${get_parent_terragrunt_dir()}/provider.tf"
   if_exists = "skip"
   contents  = file(find_in_parent_folders("provider.tf"))
 }
@@ -18,7 +18,7 @@ generate "provider" {
 // Versions
 
 generate "versions" {
-  path      = "versions.tf"
+  path      = "${get_parent_terragrunt_dir()}/versions.tf"
   if_exists = "skip"
   contents  = file(find_in_parent_folders("versions.tf"))
 }
