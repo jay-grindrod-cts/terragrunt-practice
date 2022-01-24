@@ -2,6 +2,6 @@
 terraform {
   backend "gcs" {
     bucket = "terragrunt-practice-state"
-    prefix = "dev/compute_engine"
+    prefix = "dev/vpc"
   }
 }
