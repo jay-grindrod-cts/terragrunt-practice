@@ -8,6 +8,13 @@ locals {
   state_bucket = local.root_vars.state_bucket
 }
 
+// Inputs
+
+inputs = merge(
+  yamldecode(file(find_in_parent_folders("vars.yaml"))),
+  yamldecode(file(find_in_parent_folders("env.yaml")))
+)
+
 // Provider
 
 generate "provider" {

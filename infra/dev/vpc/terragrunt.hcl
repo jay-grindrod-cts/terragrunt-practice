@@ -16,7 +16,7 @@ terraform {
 // Inputs
 
 inputs = {
-  network_name = "teragrunt-test-vpc"
+  network_name = "terragrunt-test-vpc"
 }
 
 // Include
