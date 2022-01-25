@@ -38,7 +38,7 @@ generate "versions" {
 terraform {
   required_providers {
     google = {
-      version = ">= 4.0.0"
+      version = ">= 3.0.0"
       source = "hashicorp/google"
     }
   }
