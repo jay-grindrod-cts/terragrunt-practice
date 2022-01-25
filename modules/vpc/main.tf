@@ -4,4 +4,5 @@ module "vpc" {
 
   project_id = var.project
   network_name = var.network_name
+  auto_create_subnetworks = true
 }
