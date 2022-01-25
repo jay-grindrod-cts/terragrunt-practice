@@ -18,32 +18,17 @@ inputs = merge(
 // Provider
 
 generate "provider" {
-  path      = "provider.tf"
+  path      = "${get_parent_terragrunt_dir()}/provider.tf"
   if_exists = "skip"
-  contents  = <<EOF
-provider "google" {
-  project = local.project
-  region = local.region
-  zone = local.zone
-}
-EOF
+  contents  = file(find_in_parent_folders("provider.tf"))
 }
 
 // Versions
 
 generate "versions" {
-  path      = "versions.tf"
+  path      = "${get_parent_terragrunt_dir()}/versions.tf"
   if_exists = "skip"
-  contents  = <<EOF
-terraform {
-  required_providers {
-    google = {
-      version = ">= 3.0.0"
-      source = "hashicorp/google"
-    }
-  }
-}
-EOF
+  contents  = file(find_in_parent_folders("versions.tf"))
 }
 
 // State
