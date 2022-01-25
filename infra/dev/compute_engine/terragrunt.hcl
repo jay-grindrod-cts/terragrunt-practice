@@ -1,6 +1,6 @@
 // Dependency
 
-dependency "tg_vpc_network" {
+dependency "vpc" {
     config_path = "../vpc"
 }
 
@@ -24,7 +24,7 @@ terraform {
 inputs = {
   compute_instance_name = "terragrunt-test-vm"
   machine_type = "e2-small"
-  network_name = dependency.tg_vpc_network.outputs.network_name
+  network_name = dependency.vpc.outputs.network_name
 }
 
 // Include
