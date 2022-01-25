@@ -4,5 +4,10 @@ module "network" {
 
   project_id = var.project
   network_name = var.network_name
-  auto_create_subnetworks = true
+  subnets = [        {
+            subnet_name           = var.subnet_name
+            subnet_ip             = "10.10.10.0/24"
+            subnet_region         = var.region
+        }
+  ]
 }
