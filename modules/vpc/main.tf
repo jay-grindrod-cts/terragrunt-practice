@@ -7,7 +7,7 @@ module "network" {
   subnets = [ 
     {
       subnet_name           = var.subnet_name
-      subnet_ip             = "10.10.10.0/24"
+      subnet_ip             = var.subnet_ip
       subnet_region         = var.region
     }
   ]
