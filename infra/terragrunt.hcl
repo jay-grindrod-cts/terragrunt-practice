@@ -18,7 +18,7 @@ inputs = merge(
 // Provider
 
 generate "provider" {
-  path      = "${get_parent_terragrunt_dir()}/provider.tf"
+  path      = "provider.tf"
   if_exists = "skip"
   contents  = file(find_in_parent_folders("provider.tf"))
 }
@@ -26,7 +26,7 @@ generate "provider" {
 // Versions
 
 generate "versions" {
-  path      = "${get_parent_terragrunt_dir()}/versions.tf"
+  path      = "versions.tf"
   if_exists = "skip"
   contents  = file(find_in_parent_folders("versions.tf"))
 }

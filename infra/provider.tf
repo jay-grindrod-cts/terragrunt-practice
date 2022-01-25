@@ -1,5 +1,5 @@
 provider "google" {
-    project = local.project
-    region = local.region
-    zone = local.zone
+    project = "jay-sandbox-cts"
+    region = "europe-west2"
+    zone = "europe-west2-b"
 }
