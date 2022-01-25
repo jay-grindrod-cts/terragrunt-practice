@@ -35,10 +35,6 @@ generate "versions" {
 
 remote_state {
     backend = "gcs"
-    generate = {
-        path = "${get_parent_terragrunt_dir()}/backend.tf"
-        if_exists = "skip"
-    }
     config = {
         bucket = local.state_bucket
         prefix = path_relative_to_include()
