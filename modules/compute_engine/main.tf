@@ -1,7 +1,5 @@
 resource "google_compute_instance" "compute_instance" {
-    project = var.project
-    zone = var.zone
-    
+   
     name = var.compute_instance_name
     machine_type = var.machine_type
     boot_disk {
