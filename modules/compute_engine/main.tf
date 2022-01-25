@@ -1,0 +1,1 @@
+# simple compute engine instance that is inside the vpc
