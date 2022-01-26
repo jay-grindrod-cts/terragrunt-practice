@@ -1,15 +1,15 @@
 // Dependency
 
 dependency "vpc" {
-    config_path = "../vpc"
+  config_path = "../vpc"
 }
 
 // Variables
 
 locals {
-  root_vars = yamldecode(file(find_in_parent_folders("vars.yaml")))
-  vars = yamldecode(file(find_in_parent_folders("env.yaml")))
-  version = local.vars.version
+  root_vars  = yamldecode(file(find_in_parent_folders("vars.yaml")))
+  vars       = yamldecode(file(find_in_parent_folders("env.yaml")))
+  version    = local.vars.version
   repo_owner = local.root_vars.repo_owner
 }
 
@@ -23,8 +23,8 @@ terraform {
 
 inputs = {
   compute_instance_name = "terragrunt-test-vm"
-  machine_type = "e2-small"
-  network_name = dependency.vpc.outputs.network_name
+  machine_type          = "e2-small"
+  network_name          = dependency.vpc.outputs.network_name
 }
 
 // Include

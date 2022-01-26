@@ -1,9 +1,9 @@
 // Variables
 
 locals {
-  root_vars = yamldecode(file(find_in_parent_folders("vars.yaml")))
-  vars = yamldecode(file(find_in_parent_folders("env.yaml")))
-  version = local.vars.version
+  root_vars  = yamldecode(file(find_in_parent_folders("vars.yaml")))
+  vars       = yamldecode(file(find_in_parent_folders("env.yaml")))
+  version    = local.vars.version
   repo_owner = local.root_vars.repo_owner
 }
 

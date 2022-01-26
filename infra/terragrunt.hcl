@@ -1,10 +1,10 @@
 // Variables
 
 locals {
-  root_vars = yamldecode(file(find_in_parent_folders("vars.yaml")))
-  project  = local.root_vars.project
-  region   = local.root_vars.region
-  zone = local.root_vars.zone
+  root_vars    = yamldecode(file(find_in_parent_folders("vars.yaml")))
+  project      = local.root_vars.project
+  region       = local.root_vars.region
+  zone         = local.root_vars.zone
   state_bucket = local.root_vars.state_bucket
 }
 
@@ -34,15 +34,15 @@ generate "versions" {
 // State
 
 remote_state {
-    backend = "gcs"
-    generate = {
-        path = "backend.tf"
-        if_exists = "skip"
-    }
-    config = {
-        bucket = local.state_bucket
-        prefix = path_relative_to_include()
-        project  = local.project
-        location = local.region
-    }
+  backend = "gcs"
+  generate = {
+    path      = "backend.tf"
+    if_exists = "skip"
+  }
+  config = {
+    bucket   = local.state_bucket
+    prefix   = path_relative_to_include()
+    project  = local.project
+    location = local.region
+  }
 }
